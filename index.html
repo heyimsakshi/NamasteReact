@@ -1,19 +1,20 @@
-<html>
+<!-- basic method to write hello world in html using javascript-->
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>My Application</title>
-    <script src="setincludes.js">
-
-    </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-    <!-- <div> 
-        <button>
-            Like me
-        </button> 
-        <a href="home.html">Home</a>
-    </div> -->
-    <!-- <input type="text" id="search" onchange="BetterFunction()"> -->
-   <!-- <button id="myid" onclick="mythrothle()">hello</button> -->
-</body> 
-
+    <div id="root">
+       <script>
+        const heading=document.createElement("h1");
+        heading.innerHTML="hi";
+        const root=document.getElementById("root");
+        root.appendChild(heading);
+       </script>
+    </div>
+</body>
 </html>

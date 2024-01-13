@@ -1,0 +1,47 @@
+<!-- what do we need to configure our project with react?
+
+Browsers understands the javascript code but it doesnot understand react code .
+Browsers dont undertsand react and neither our poject is configured with react.
+To configure react into our project we can import CDN. -->
+
+<!-- what is CDN ?
+This is content dilevery network. These are the websites where react has been hosted
+ -->
+ <!-- we put react into our project using CDN links  -->
+ 
+
+ <!-- why do we use CDN links for our project?
+ CDN links are essential for several reasons:
+  Faster Load Times: CDN servers are optimized 
+  for quick content delivery, reducing the time it 
+  takes for web pages to load -->
+
+  <!-- In ReactJS, Cross-Origin Resource Sharing or CORS 
+  requests refers to the method that allows you to 
+  make requests to the server deployed at a different
+   domain. As a reference, if the frontend and backend
+ are at two different domains, we need CORS there. -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./index.css">
+    <title>Document</title>
+</head>
+<body>
+<div id="root">
+  sakshi here
+</div>
+    <!-- writing these two lines will configure our project with react -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="./complexReact.js">
+   
+</script>
+</body>
+</html>
