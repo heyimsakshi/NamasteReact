@@ -3,9 +3,9 @@ import ReactDOM from "react-dom/client"
 const parent=React.createElement("div",{id:"parent"},React.createElement("div",{id:"child"},[
     React.createElement("h1",{id:"baby"},"Hi from nepal"),
     React.createElement("h2",{id:"mm"},"h2tage")
-]))
+]));
 
-const jsxParent=(<h1 id="parent">Hi jsx</h1>)
+const jsxParent=(<h1 id="parent">Hi jsx</h1>);
 //both jsx and  parent return the same object 
 //browsers don't understand jsx but how is it understanding the jsx code?
 //parcel is responsible for browser to understand the jsx code.
