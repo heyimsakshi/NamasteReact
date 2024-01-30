@@ -4,7 +4,7 @@
   "description": "namaste react learnings",
   "main": "app.js",
   "scripts": {
-    "start":"parcel helloWorldReact.html",
+    "start":"parcel appLayout.html", 
     "build":"parcel build index.html",
     "test": "jest"
   },
