@@ -1,0 +1,25 @@
+{
+  "name": "laying_foundation",
+  "version": "1.0.0",
+  "description": "laying_foundation",
+  "main": "complexReact.js",
+  "scripts": {
+    "start": "parcel helloWorldReact.html",
+    "build": "parcel build helloWorldReact.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heyimsakshi/NamasteReact.git"
+  },
+  "author": "Sakshi Agrawal",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.11.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
