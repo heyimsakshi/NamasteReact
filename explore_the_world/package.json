@@ -1,0 +1,25 @@
+{
+  "name": "explore_the_world",
+  "version": "1.0.0",
+  "description": "explore react",
+  "main": "appLayout.js",
+  "scripts": {
+    "start": "parcel appLayout.html",
+    "build": "parcel build appLayout.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heyimsakshi/NamasteReact.git"
+  },
+  "author": "sakshi",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.11.0",
+    "process": "^0.11.10"
+  }
+}
