@@ -2,7 +2,7 @@
 const resList = [
     {
       type: "restaurant",
-      data: {
+      info: {
         type: "F",
         id: "74453",
         name: "Domino's Pizza",

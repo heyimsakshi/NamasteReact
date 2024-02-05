@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
-import resList from "../utils/mockData";
 import { useEffect, useState } from "react";
+import Shimmer from "./shimmer";
+
 //RestaurantCard will be build as a separate component as it will be reused
 
 
@@ -8,12 +9,26 @@ import { useEffect, useState } from "react";
 export const Body=()=>{
     // state/local variable- super power variable of a component
     //useState returns an object 
-     [ListOfRestaurants,setListOfRestaurants]=useState(resList); // destructing of an object -js concept
+     [ListOfRestaurants,setListOfRestaurants]=useState([]); // destructing of an object -js concept
     
      useEffect(()=>{
-        console.log('hi from useEffect');
-     },[]);
-    return(
+    
+      fetchData();
+    },[]);
+    const fetchData = async () => {
+        const data = await fetch(
+            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.456333351378966&lng=78.37263149036954&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+        );
+
+        const json=await data.json();
+       // console.log(json.data.cards)
+        setListOfRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        
+     //  console.log(json);
+    };
+   // console.log(ListOfRestaurants)
+    return ListOfRestaurants?.length===0 ? ( <Shimmer />):
+    (
         <div className="body ">
             <div className="filter">
                 <button className="filter-btn" onClick={
@@ -25,10 +40,14 @@ export const Body=()=>{
                 }> Top Rated Restaurant</button>
             </div>
             <div className="res-container">
+            
                
                {
-                ListOfRestaurants.map((restaurant)=>(
-                    <RestaurantCard key={restaurant.data.id} resData={restaurant}/>
+               //console.log(ListOfRestaurants)
+               
+              
+               (ListOfRestaurants.length>0) && ListOfRestaurants.map((restaurant)=>(
+                    <RestaurantCard key={restaurant?.info?.id} resData={restaurant}/>
                 ))
                }
               

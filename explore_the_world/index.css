@@ -57,3 +57,14 @@ list-style-type: none;
     margin: 12px;
     cursor:pointer;
 }
+
+.shimmer-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.shimmer-card{
+    height:400px;
+    width:200px;
+    margin:10px;
+    background-color: gray;
+}
