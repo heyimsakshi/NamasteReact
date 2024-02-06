@@ -10,7 +10,8 @@ export const Body=()=>{
     // state/local variable- super power variable of a component
     //useState returns an object 
      [ListOfRestaurants,setListOfRestaurants]=useState([]); // destructing of an object -js concept
-    
+    [listOfFilteredRestaurants,setlistOfFilteredRestaurants]=useState([]);
+     [searchText,setSearchText]=useState("")
      useEffect(()=>{
     
       fetchData();
@@ -24,7 +25,7 @@ export const Body=()=>{
      
          //Optional chaining
         setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        
+        setlistOfFilteredRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     
     };
  
@@ -33,6 +34,15 @@ export const Body=()=>{
     (
         <div className="body">
             <div className="filter">
+            <input type="search" className="search-bar" value={searchText} onChange={(e)=>{
+                setSearchText(e.target.value)
+            }}/>
+            <button className="search-btn" onClick={()=>{
+                  const filteredRestaurants= ListOfRestaurants.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()));
+                //console.log(filteredRestaurants);
+                    setlistOfFilteredRestaurants(filteredRestaurants)
+            }}>search</button>
+
                 <button className="filter-btn" onClick={
                     ()=>{
                         const filteredRestaurants= ListOfRestaurants.filter((res)=>res.info.avgRating >'4');
@@ -46,7 +56,7 @@ export const Body=()=>{
             <div className="res-container">
                {
               
-              ListOfRestaurants.map((restaurant)=>(
+              listOfFilteredRestaurants.map((restaurant)=>(
                     <RestaurantCard key={restaurant?.info?.id} resData={restaurant}/>
                 ))
                }
