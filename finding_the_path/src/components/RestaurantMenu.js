@@ -5,12 +5,14 @@ import { MENU_API } from "../utils/constants";
 const RestaurantMenu=()=>{
     const {resId}=useParams()
     const [resInfo,setResInfo]=useState(null);
+    console.log(resId);
     useEffect(()=>{
         fetchMenu();
     },[]) ;
     const fetchMenu=async ()=>{
-        const apiRes=await fetch(MENU_API + resId);
+        const apiRes=await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.37240&lng=78.43780&restaurantId=82407&catalog_qa=undefined&submitAction=ENTER");
         const json=await apiRes.json();
+        console.log(json);
         setResInfo(json.data);
     }
     if(resInfo===null){
