@@ -1,7 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./shimmer";
-
+import { Link } from "react-router-dom";
 //RestaurantCard will be build as a separate component as it will be reused
 
 
@@ -57,7 +57,12 @@ export const Body=()=>{
                {
               
               listOfFilteredRestaurants.map((restaurant)=>(
-                    <RestaurantCard key={restaurant?.info?.id} resData={restaurant}/>
+                <Link 
+                to={"/restaurant/" + restaurant?.info?.id}
+                key={ restaurant?.info?.id }
+            >
+                <RestaurantCard key={restaurant?.info?.id} resData={restaurant} />
+            </Link>
                 ))
                }
               
