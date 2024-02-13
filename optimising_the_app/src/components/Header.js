@@ -16,6 +16,10 @@ const Header=()=>{
 
              <div className="nav-items">
                 <ul>
+                <li>
+                    online status:{onlineStatus? "online":"offline"
+                    }
+                </li>
                     <li>
                     <Link to="/"> Home </Link>
                     </li>

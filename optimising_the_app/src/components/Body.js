@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 //RestaurantCard will be build as a separate component as it will be reused
 
 
@@ -12,6 +13,7 @@ export const Body=()=>{
      [ListOfRestaurants,setListOfRestaurants]=useState([]); // destructing of an object -js concept
     [listOfFilteredRestaurants,setlistOfFilteredRestaurants]=useState([]);
      [searchText,setSearchText]=useState("")
+     const onlineStatus=useOnlineStatus();
      useEffect(()=>{
     
       fetchData();
@@ -29,6 +31,11 @@ export const Body=()=>{
     
     };
  
+if(onlineStatus==false){
+    return (
+        <div>You are currently offline </div>
+    )
+}
     //conditional rendering
     return ListOfRestaurants?.length===0 ? ( <Shimmer />):
     (
