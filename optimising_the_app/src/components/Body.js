@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Shimmer from "./shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import useRestaurantData from "../utils/useRestaurantData";
 //RestaurantCard will be build as a separate component as it will be reused
 
 
@@ -11,26 +12,22 @@ export const Body=()=>{
     // state/local variable- super power variable of a component
     //useState returns an object 
      [ListOfRestaurants,setListOfRestaurants]=useState([]); // destructing of an object -js concept
-    [listOfFilteredRestaurants,setlistOfFilteredRestaurants]=useState([]);
-     [searchText,setSearchText]=useState("")
-     const onlineStatus=useOnlineStatus();
-     useEffect(()=>{
-    
-      fetchData();
-    },[]);
-    const fetchData = async () => {
-        const data = await fetch(
-            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.456333351378966&lng=78.37263149036954&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-        );
 
-        const json=await data.json();
-     
-         //Optional chaining
-        setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setlistOfFilteredRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    [listOfFilteredRestaurants,setlistOfFilteredRestaurants]=useState([]);
+
+     [searchText,setSearchText]=useState("")
+
+     const onlineStatus=useOnlineStatus();
     
-    };
- 
+    const resList=useRestaurantData();
+    
+    useEffect(()=>{
+        if(resList){
+            setListOfRestaurants(resList);
+            setlistOfFilteredRestaurants(resList);
+        }
+    },[resList])
+    
 if(onlineStatus==false){
     return (
         <div>You are currently offline </div>
@@ -61,18 +58,16 @@ if(onlineStatus==false){
             </div>
 
             <div className="res-container">
-               {
-              
-              listOfFilteredRestaurants.map((restaurant)=>(
-                <Link 
-                to={"/restaurant/" + restaurant?.info?.id}
-                key={ restaurant?.info?.id }
-            >
-                <RestaurantCard key={restaurant?.info?.id} resData={restaurant} />
-            </Link>
-                ))
-               }
-              
+                {
+                    listOfFilteredRestaurants.map((restaurant) => 
+                        <Link 
+                            to={"/restaurant/" + restaurant?.info?.id}
+                            key={ restaurant?.info?.id }
+                        >
+                            <RestaurantCard key={restaurant?.info?.id} resData={restaurant} />
+                        </Link>
+                    )
+                }
             </div>
         </div>
     )

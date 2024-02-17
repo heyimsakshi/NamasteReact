@@ -9,8 +9,8 @@ const RestaurantMenu = () => {
    if (resInfo === null) {
     return <Shimmer />;
 }
-
-    const { name } = resInfo?.cards?.[2]?.card?.card?.info;
+console.log(resInfo)
+    const { name } =resInfo?.cards?.[0]?.card?.card?.info
 console.log(name);
     // const { itemCards } = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
 

@@ -2,10 +2,10 @@
   "name": "explore_the_world",
   "version": "1.0.0",
   "description": "explore react",
-  "main": "appLayout.js",
+  "main": "App.js",
   "scripts": {
-    "start": "parcel appLayout.html",
-    "build": "parcel build appLayout.html",
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "repository": {
