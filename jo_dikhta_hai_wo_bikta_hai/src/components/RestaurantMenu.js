@@ -9,25 +9,20 @@ const RestaurantMenu = () => {
    if (resInfo === null) {
     return <Shimmer />;
 }
-console.log(resInfo)
-    const { name } =resInfo?.cards?.[0]?.card?.card?.info
-console.log(name);
-    // const { itemCards } = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+        let data;
+
+        resInfo.cards.forEach((res,index) => {
+            if(res?.card?.card?.info){
+              data =resInfo?.cards?.[index]?.card?.card?.info;
+              return;
+            }
+        });
+    const {name}=data;
+
 
   return (
     <div className="menu">
         <h1>{ name }</h1>
-        
-        <h2> Menu </h2>
-        {/* <ul>
-            { itemCards?.map((item) => 
-                <li 
-                    key={item.card?.info.id}
-                >
-                    { item.card?.info?.name } - { item.card?.info?.price ? item.card?.info?.price : item.card?.info?.defaultPrice }
-                </li>
-            ) }
-        </ul> */}
     </div>
   )
 }

@@ -31,8 +31,6 @@ const styleCard={
     )
 };
 
-
-
 // const RestaurantCard=(props)=>{
 //  console.log(props)
 //     return(
@@ -56,23 +54,20 @@ const styleCard={
 //         </div>
 //     )
 // }
-
-
-
 //Higher oRDER component
 //enhances the existing component and returns
 
 
 export const withPromotedLabel= (RestaurantCard)=>{
- return (props)=>{
-    return(
-        <div>
-            <label>Promoted</label>
-            <RestaurantCard {...props}/>
-        </div>
-        
-    )
- }
-}
-
+    return (props)=>{
+        console.log(props)
+       return(
+           <div>
+               <label className="absolute text-white bg-black rounded-sm "  >Promoted</label>
+               <RestaurantCard {...props}/>
+           </div>
+           
+       )
+    }
+   }
 export default RestaurantCard;
