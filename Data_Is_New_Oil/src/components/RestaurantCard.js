@@ -60,7 +60,7 @@ const styleCard={
 
 export const withPromotedLabel= (RestaurantCard)=>{
     return (props)=>{
-        console.log(props)
+     //   console.log(props)
        return(
            <div>
                <label className="absolute text-white bg-black rounded-sm "  >Promoted</label>
