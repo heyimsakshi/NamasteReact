@@ -1,7 +1,7 @@
 import ItemList from "./ItemList";
 import { useEffect, useState } from "react";
 RestaurantCategory = ({data,showItems,setIndex})=> {
-    console.log(setIndex())
+  //  console.log(setIndex())
    // const [showItems,setShowItems]=useState(false);
     handleClick=()=>{
         setIndex();

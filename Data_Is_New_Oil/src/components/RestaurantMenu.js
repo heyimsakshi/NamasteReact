@@ -28,7 +28,7 @@ const RestaurantMenu = () => {
 
     
    
-    console.log(catogories)
+   // console.log(catogories)
    
   
   return (

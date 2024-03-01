@@ -1,11 +1,14 @@
 import { LOGO_URL } from "../utils/constants";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 const Header=()=>{
     const [btnName,setBtnName]=useState("login");
     const onlineStatus=useOnlineStatus();
 
+    const data=useContext(UserContext);
+    console.log(data)
     return(  
          <div className="flex justify-between bg-slate-200 sm:bg-pink-300">
              <div className="logo-container">
@@ -36,7 +39,7 @@ const Header=()=>{
                         
                     </li>
                     <li className="p-4">
-                        Cart
+                        {data.loggedInUser}
                     </li>
                     {/* want this login button to be dynamic which chnages to logout when inside login */}
                      <button className="login-btn" onClick={()=>{

@@ -1,9 +1,10 @@
 import RestaurantCard,{withPromotedLabel} from "./RestaurantCard";
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
 import Shimmer from "./shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import useRestaurantData from "../utils/useRestaurantData";
+import UserContext  from "../utils/UserContext";
 //RestaurantCard will be build as a separate component as it will be reused
 
 
@@ -21,10 +22,10 @@ export const Body=()=>{
     
     const resList=useRestaurantData();
     const RestaurantCardPromoted=withPromotedLabel(RestaurantCard);
-    
+    const {setUserName,loggedInUser}=useContext(UserContext)
     useEffect(()=>{
         if(resList){
-            console.log(resList);
+        //    console.log(resList);
             setListOfRestaurants(resList);
             setlistOfFilteredRestaurants(resList);
         }
@@ -60,7 +61,12 @@ if(onlineStatus==false){
 
                 }> Top Rated Restaurant</button>
                 </div>
+
+                <div className="px-2 py-10 ">
+               <input className="cursor-pointer bg-pink-50 outline-double"type="text" value={loggedInUser} onChange={(e)=>{setUserName(e.target.value)}}/>
+                </div>
             </div>
+           
 
             <div className="flex flex-wrap">
                 {
